@@ -24,19 +24,17 @@ public class Main {
 
         doc = Jsoup.connect(url).get();
         Elements elements = doc.getElementsByClass("pcv3__container css-1bd8ct");
-        Elements anchor_link = doc.getElementsByAttribute("a");
-        System.out.println(anchor_link);
-//        List<Produk> produks = new ArrayList<Produk>();
-//        for(Element e:elements){
-//            String name = e.getElementsByClass("css-18c4yhp").text();
-//            int harga = Integer.parseInt(e.getElementsByClass("css-rhd610").text().substring(2).replace(".",""));
-//            String link = e.getElementsByClass("pcv3_info-content css-gwkf0u").text();
-//            Produk produk = new Produk(name,harga,link);
-//            produks.add(produk);
-//            System.out.println();
-//        }
-//
-//        Collections.sort(produks);
+        List<Produk> produks = new ArrayList<Produk>();
+        for(Element e:elements){
+            String name = e.getElementsByClass("css-18c4yhp").text();
+            int harga = Integer.parseInt(e.getElementsByClass("css-rhd610").text().substring(2).replace(".",""));
+            String link = e.getElementsByClass("css-1ehqh5q").select("a").attr("href");
+            Produk produk = new Produk(name,harga,link);
+            produks.add(produk);
+            System.out.println(link);
+        }
+
+        Collections.sort(produks);
     }
 
 }
