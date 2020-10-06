@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,7 @@ public class Main {
         String input= scan.nextLine();
         String barang = input.replaceAll("\\s","%20");
         String url = "https://www.tokopedia.com/search?st=product&q=" +barang;
+        Desktop desktop = java.awt.Desktop.getDesktop();
 
         doc = Jsoup.connect(url).get();
         Elements elements = doc.getElementsByClass("pcv3__container css-1bd8ct");
@@ -35,6 +37,7 @@ public class Main {
         }
 
         Collections.sort(produks);
+
     }
 
 }
